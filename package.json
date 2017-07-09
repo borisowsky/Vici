@@ -1,7 +1,8 @@
 {
-  "name": "electron-react-boilerplate",
+  "name": "vici",
+  "description": "vici",
   "version": "1.0.0",
-  "license": "MIT",
+  "license": "ISO",
   "main": "main.js",
   "scripts": {
     "prod": "webpack --config webpack.build.config.js && electron --noDevServer .",
