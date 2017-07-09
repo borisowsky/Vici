@@ -1,0 +1,34 @@
+{
+  "parser": "babel-eslint",
+  "rules": {
+    "max-len": [2, 120],
+
+    // Validate anonymous functions
+    "func-names": [ "error", "never" ],
+
+    // Can use default callback functions instead of arrow (to prevent this scope errors)
+    "prefer-arrow-callback": 0,
+
+    // Empty anchors (such as clickable icons)
+    "jsx-a11y/anchor-has-content": [0, {
+      "components": [ "Anchor" ]
+    }],
+
+    // Validate span/div etc. interactive elements
+    "jsx-a11y/no-static-element-interactions": 0,
+
+    // Hot Module Replacement dosent work with stateless functions
+    "react/prefer-stateless-function": 0,
+
+    "react/prop-types": 0
+  },
+  "extends": "airbnb",
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "import"
+  ],
+  "env": {
+    "browser": true
+  }
+}
