@@ -1,0 +1,17 @@
+{
+  "name": "vici",
+  "version": "1.0.0",
+  "description": "vici",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "",
+  "keywords": [
+  ],
+  "author": "GitHub",
+  "license": "ISO",
+  "devDependencies": {
+    "electron": "~1.6.2"
+  }
+}
