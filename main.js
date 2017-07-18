@@ -17,7 +17,7 @@ if (process.defaultApp
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 1024,
+    width: 1280,
     height: 768,
     show: false,
   });

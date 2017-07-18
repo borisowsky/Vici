@@ -1,0 +1,18 @@
+.flipbook {
+  &__page {
+    background: #eee;
+
+    &--description {
+      // Styles for description
+    }
+
+    &--question {
+      // Styles for question
+    }
+  }
+
+  &__content {
+    padding: 40px 20px;
+    user-select: none;
+  }
+}
