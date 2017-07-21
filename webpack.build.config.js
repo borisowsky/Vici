@@ -27,6 +27,11 @@ module.exports = {
         include: [SRC_DIR],
       },
       {
+        test: /\.json$/,
+        use: ['json-loader'],
+        include: [SRC_DIR],
+      },
+      {
         test: /\.jsx?$/,
         use: ['babel-loader'],
         include: [SRC_DIR],
