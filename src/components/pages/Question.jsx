@@ -12,26 +12,8 @@ class Question extends Component {
 
     const { answers, current } = this.state;
     const { rightAnswers } = questionsList[current];
-    const [
-      ansLen,
-      rightAnsLen,
-    ] = [
-      answers.length,
-      rightAnswers.length,
-    ];
 
-    // Т. к. нам известно, что максимум правильных ответов - 2, то нет смысла делать проверку на длину, не равную 1
-    if (ansLen === 0) {
-      console.log('Выберите ответ');
-    } else if ((ansLen < rightAnsLen) && rightAnsLen.length !== 1) {
-      console.log('Выберите ещё один ответ');
-    }
-
-    console.log(
-      `Вопрос ${this.state.current}`,
-      `Вы ответили: ${answers.toString()}`,
-      `Правильно: ${rightAnswers.toString()}`,
-    );
+    this.props.onAnswer(this.state.current, answers, rightAnswers);
   }
 
   chooseAnswer = (e) => {
@@ -41,7 +23,7 @@ class Question extends Component {
     if (checked) {
       answers = [...answers, value];
       answers.sort();
-      this.setState({ answers }, () => console.log(`Вопрос ${this.state.current}`, this.state.answers));
+      this.setState({ answers });
     } else {
       const index = answers.indexOf(value);
 
@@ -50,7 +32,7 @@ class Question extends Component {
       }
 
       answers.sort();
-      this.setState({ answers }, () => console.log(`Вопрос ${this.state.current}`, this.state.answers));
+      this.setState({ answers });
     }
   }
 
@@ -146,6 +128,12 @@ class Question extends Component {
               {this.renderAnswers()}
               <div className="question__controls">
                 <input type="submit" className="question__btn" value="Ответить" />
+
+                <button
+                  type="button"
+                  className="question__btn"
+                  onClick={() => { this.props.onFindOut(current); }}
+                >Узнать ответ</button>
               </div>
             </form>
           </div>
