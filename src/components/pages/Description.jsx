@@ -6,8 +6,19 @@ class Question extends Component {
   }
 
   componentDidUpdate() {
+    /**
+     * @param props.questionState
+     * @type number
+     * 0 - Начальное состояние
+     * 1 - "Узнать ответ"
+     * 2 - "Правильный ответ!"
+     * 3 - "Неправильно!"
+     * 4 - "Частично правильно"
+     * 5 - Дополнительная информация по вопросу
+     */
+
     if (this.state.current === this.props.currentQuestion) {
-      console.log(this.props.questionState);
+      // console.log(this.props.questionState);
       // $('.flipbook').turn('next');
     }
   }

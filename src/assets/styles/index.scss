@@ -4,6 +4,7 @@
 @import 'blocks/flipbook';
 @import 'blocks/cover';
 @import 'blocks/question';
+@import 'blocks/btn';
 
 // Global styles must be written here
 html {
@@ -20,9 +21,15 @@ body {
 }
 
 .main {
+  background: url('../img/background.jpg') no-repeat center center;
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   width: 100%;
+}
+
+.container {
+  width: 722px;
 }

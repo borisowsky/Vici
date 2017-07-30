@@ -1,13 +1,22 @@
 .flipbook {
-  &__page {
-    background: #eee;
+  perspective: 2000px;
+  filter: drop-shadow(0 10px 20px rgba(#000, .5));
+  transition: margin .3s;
 
+  &__page {
     &--description {
-      // Styles for description
+      background: #f3f3eb url('../img/paper-left.jpg') no-repeat center center;
+      background-size: cover;
     }
 
     &--question {
-      // Styles for question
+      background: #f3f3eb url('../img/paper-right.jpg') no-repeat center center;
+      background-size: cover;
+    }
+
+    &--hard-inside {
+      background: #633e36 url('../img/hard-inside.jpg') no-repeat center center;
+      background-size: cover;
     }
   }
 

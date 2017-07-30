@@ -1,9 +1,7 @@
 import React from 'react';
 
-const Cover = props => (
-  <div className="cover">
-    {props.title}
-  </div>
+const Cover = () => (
+  <div className="cover" />
 );
 
 export default Cover;

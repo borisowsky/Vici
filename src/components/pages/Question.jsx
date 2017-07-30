@@ -127,11 +127,15 @@ class Question extends Component {
             <form className="question__form" onSubmit={this.onFormSubmit}>
               {this.renderAnswers()}
               <div className="question__controls">
-                <input type="submit" className="question__btn" value="Ответить" />
+                <input
+                  type="submit"
+                  className="question__btn btn"
+                  value="Ответить"
+                />
 
                 <button
                   type="button"
-                  className="question__btn"
+                  className="question__btn btn"
                   onClick={() => { this.props.onFindOut(current); }}
                 >Узнать ответ</button>
               </div>
