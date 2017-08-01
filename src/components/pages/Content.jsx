@@ -2,7 +2,9 @@ import React from 'react';
 
 const Cover = () => (
   <div className="flipbook__page flipbook__page--question">
-    Оглавление
+    <div className="flipbook__content">
+      Something else
+    </div>
   </div>
 );
 

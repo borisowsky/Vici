@@ -18,7 +18,6 @@ class Question extends Component {
      */
 
     if (this.state.current === this.props.currentQuestion) {
-      // console.log(this.props.questionState);
       // $('.flipbook').turn('next');
     }
   }
@@ -26,7 +25,9 @@ class Question extends Component {
   render() {
     return (
       <div className="flipbook__page flipbook__page--description">
-        <div className="flipbook__content">{this.props.questionState}</div>
+        <div className="flipbook__content">
+          Pictures here
+        </div>
       </div>
     );
   }

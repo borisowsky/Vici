@@ -1,10 +1,12 @@
 @import '~normalize.css';
 @import 'helpers/fonts';
 @import 'helpers/variables';
+@import 'helpers/animations';
 @import 'blocks/flipbook';
 @import 'blocks/cover';
 @import 'blocks/question';
 @import 'blocks/btn';
+@import 'blocks/guide';
 
 // Global styles must be written here
 html {

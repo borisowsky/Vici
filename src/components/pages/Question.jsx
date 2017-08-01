@@ -121,7 +121,9 @@ class Question extends Component {
         <div className="flipbook__content">
           <div className="flipbook__question question">
             <div className="question__text">
-              {questionsList[current].text}
+              <div>Вопрос {this.state.current}.</div>
+              <br />
+              <div>{questionsList[current].text}</div>
             </div>
 
             <form className="question__form" onSubmit={this.onFormSubmit}>
