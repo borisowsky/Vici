@@ -65,7 +65,7 @@ class Question extends Component {
           <label
             className="question__label"
             htmlFor={answerId1}
-          >{answers['А']}</label>
+          ><b>А.</b> {answers['А']}</label>
         </div>
 
         <div className="question__answer">
@@ -79,7 +79,7 @@ class Question extends Component {
           <label
             className="question__label"
             htmlFor={answerId2}
-          >{answers['Б']}</label>
+          ><b>Б.</b> {answers['Б']}</label>
         </div>
 
         <div className="question__answer">
@@ -93,7 +93,7 @@ class Question extends Component {
           <label
             className="question__label"
             htmlFor={answerId3}
-          >{answers['В']}</label>
+          ><b>В.</b> {answers['В']}</label>
         </div>
 
         <div className="question__answer">
@@ -107,7 +107,7 @@ class Question extends Component {
           <label
             className="question__label"
             htmlFor={answerId4}
-          >{answers['Г']}</label>
+          ><b>Г.</b> {answers['Г']}</label>
         </div>
       </div>
     );

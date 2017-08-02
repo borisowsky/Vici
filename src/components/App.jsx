@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Cover from './pages/Cover';
-import Description from './pages/Description';
+import Pictures from './pages/Pictures';
 import Question from './pages/Question';
 import Results from './pages/Results';
 import Content from './pages/Content';
@@ -28,8 +28,8 @@ class App extends Component {
   componentDidMount() {
     $('.flipbook').turn({
       gradients: true,
-      width: 722,
-      height: 500,
+      width: 1040,
+      height: 700,
       autoCenter: true,
       duration: 1000,
     });
@@ -115,132 +115,77 @@ class App extends Component {
 
             <Content />
 
-            <Description
-              number={1}
-              currentQuestion={this.state.currentQuestion}
-              questionState={this.state.questionState}
-              errorState={this.state.errorState}
-            />
+            <Pictures number={1} />
             <Question
               number={1}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
             />
 
-            <Description
-              number={2}
-              currentQuestion={this.state.currentQuestion}
-              questionState={this.state.questionState}
-              errorState={this.state.errorState}
-            />
+            <Pictures number={2} />
             <Question
               number={2}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
             />
 
-            <Description
-              number={3}
-              currentQuestion={this.state.currentQuestion}
-              questionState={this.state.questionState}
-              errorState={this.state.errorState}
-            />
+            <Pictures number={3} />
             <Question
               number={3}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
             />
 
-            <Description
-              number={4}
-              currentQuestion={this.state.currentQuestion}
-              questionState={this.state.questionState}
-              errorState={this.state.errorState}
-            />
+            <Pictures number={4} />
             <Question
               number={4}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
             />
 
-            <Description
-              number={5}
-              currentQuestion={this.state.currentQuestion}
-              questionState={this.state.questionState}
-              errorState={this.state.errorState}
-            />
+            <Pictures number={5} />
             <Question
               number={5}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
             />
 
-            <Description
-              number={6}
-              currentQuestion={this.state.currentQuestion}
-              questionState={this.state.questionState}
-              errorState={this.state.errorState}
-            />
+            <Pictures number={6} />
             <Question
               number={6}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
             />
 
-            <Description
-              number={7}
-              currentQuestion={this.state.currentQuestion}
-              questionState={this.state.questionState}
-              errorState={this.state.errorState}
-            />
+            <Pictures number={7} />
             <Question
               number={7}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
             />
 
-            <Description
-              number={8}
-              currentQuestion={this.state.currentQuestion}
-              questionState={this.state.questionState}
-              errorState={this.state.errorState}
-            />
+            <Pictures number={8} />
             <Question
               number={8}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
             />
 
-            <Description
-              number={9}
-              currentQuestion={this.state.currentQuestion}
-              questionState={this.state.questionState}
-              errorState={this.state.errorState}
-            />
+            <Pictures number={9} />
             <Question
               number={9}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
             />
 
-            <Description
-              number={10}
-              currentQuestion={this.state.currentQuestion}
-              questionState={this.state.questionState}
-              errorState={this.state.errorState}
-            />
+            <Pictures number={10} />
             <Question
               number={10}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
             />
 
-            <Description
-              number={11}
-              currentQuestion={this.state.currentQuestion}
-              questionState={this.state.questionState}
-              errorState={this.state.errorState}
-            />
+            <Pictures number={11} />
             <Question
               number={11}
               onAnswer={this.handleAnswer}
