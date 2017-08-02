@@ -5,6 +5,7 @@ import Question from './pages/Question';
 import Results from './pages/Results';
 import Content from './pages/Content';
 import Guide from './Guide';
+import questionsList from '../questions.json';
 
 class App extends Component {
   /**
@@ -40,9 +41,19 @@ class App extends Component {
     });
   }
 
-  switchToLastStep = (delay) => {
+  switchToLastStep = (delay, question) => {
+    const questionToShow = question + 1;
+
     setTimeout(() => {
-      this.setState({ questionState: 5 });
+      if (questionsList[questionToShow].hint) {
+        this.setState({ questionState: 5 }, () => {
+          setTimeout(() => {
+            this.setState({ questionState: 0 });
+          }, delay * 3);
+        });
+      } else {
+        this.setState({ questionState: 0 });
+      }
     }, delay);
   }
 
@@ -59,7 +70,7 @@ class App extends Component {
         currentQuestion: this.state.currentQuestion + 1,
       });
 
-      this.switchToLastStep(3000);
+      this.switchToLastStep(3000, this.state.currentQuestion);
     } else {
       let includes = false;
       answer.forEach((element) => {
@@ -74,7 +85,7 @@ class App extends Component {
         currentQuestion: this.state.currentQuestion + 1,
       });
 
-      this.switchToLastStep(3000);
+      this.switchToLastStep(3000, this.state.currentQuestion);
     }
   }
 
