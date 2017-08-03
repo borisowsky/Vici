@@ -24,4 +24,21 @@
     padding: 40px 20px;
     user-select: none;
   }
+
+  &__pointer {
+    width: 100px;
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    transform: rotate(30deg);
+    opacity: .5;
+  }
+
+  &__restart {
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    left: 195px;
+    margin: auto;
+  }
 }

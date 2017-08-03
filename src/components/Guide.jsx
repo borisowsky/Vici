@@ -30,19 +30,19 @@ export default class Guide extends Component {
         break;
 
       case 1:
-        questionMessage = 'Хорошо...';
+        questionMessage = 'Вы пропускаете ход';
         break;
 
       case 2:
-        questionMessage = 'Правильный ответ!';
+        questionMessage = 'Поздравляю! Это – правильный ответ';
         break;
 
       case 3:
-        questionMessage = 'Неправильно!';
+        questionMessage = 'Извините, вы ошиблись. Попробуйте найти ответ на следующий вопрос';
         break;
 
       case 4:
-        questionMessage = 'Частично правильно!';
+        questionMessage = 'Извините, вы были близки к правильному ответу, но ошиблись';
         break;
 
       case 5:

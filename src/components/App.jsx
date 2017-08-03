@@ -23,6 +23,10 @@ class App extends Component {
     questionState: 0,
     errorState: 0,
     score: 0,
+    answeredQuestions: [],
+    readyForNext: true,
+    messageDelay: 8500,
+    hintDelay: 3000,
   }
 
   componentDidMount() {
@@ -34,27 +38,56 @@ class App extends Component {
       duration: 1000,
     });
 
-    $('.flipbook').bind('turning', (event, page) => {
+    $('.flipbook').bind('turning', (e, page) => {
+      if ([3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25].includes(page)) {
+        // Cannot flip to previous page
+        e.preventDefault();
+      }
+
+      if (page === 4) {
+        this.setState({ readyForNext: false });
+      }
+
+      if (this.state.answeredQuestions.includes(this.state.currentQuestion)) {
+        this.setState({ readyForNext: false });
+      }
+
       setTimeout(() => {
         this.setState({ questionState: (page === 2) ? -1 : 0 });
       }, 500);
     });
   }
 
+  componentDidUpdate = () => {
+    if (!this.state.readyForNext) {
+      $('.flipbook').turn('disable', true);
+    } else {
+      $('.flipbook').turn('disable', false);
+    }
+  }
+
   switchToLastStep = (delay, question) => {
     const questionToShow = question + 1;
 
-    setTimeout(() => {
-      if (questionsList[questionToShow].hint) {
-        this.setState({ questionState: 5 }, () => {
-          setTimeout(() => {
-            this.setState({ questionState: 0 });
-          }, delay * 3);
-        });
-      } else {
-        this.setState({ questionState: 0 });
-      }
-    }, delay);
+    this.setState({ readyForNext: false }, () => {
+      setTimeout(() => {
+        if (questionsList[questionToShow].hint) {
+          this.setState({ questionState: 5 }, () => {
+            setTimeout(() => {
+              this.setState({
+                questionState: 0,
+                readyForNext: true,
+              });
+            }, this.state.hintDelay);
+          });
+        } else {
+          this.setState({
+            questionState: 0,
+            readyForNext: true,
+          });
+        }
+      }, delay);
+    });
   }
 
   handleAnswer = (question, answer, rightAnswer) => {
@@ -68,9 +101,10 @@ class App extends Component {
         errorState: 0,
         score: this.state.score + 1,
         currentQuestion: this.state.currentQuestion + 1,
+        answeredQuestions: [...this.state.answeredQuestions, this.state.currentQuestion + 1],
       });
 
-      this.switchToLastStep(3000, this.state.currentQuestion);
+      this.switchToLastStep(this.state.messageDelay, this.state.currentQuestion);
     } else {
       let includes = false;
       answer.forEach((element) => {
@@ -83,9 +117,10 @@ class App extends Component {
         questionState: (includes ? 4 : 3),
         errorState: 0,
         currentQuestion: this.state.currentQuestion + 1,
+        answeredQuestions: [...this.state.answeredQuestions, this.state.currentQuestion + 1],
       });
 
-      this.switchToLastStep(3000, this.state.currentQuestion);
+      this.switchToLastStep(this.state.messageDelay, this.state.currentQuestion);
     }
   }
 
@@ -94,6 +129,22 @@ class App extends Component {
       questionState: 1,
       errorState: 0,
       currentQuestion: this.state.currentQuestion + 1,
+      answeredQuestions: [...this.state.answeredQuestions, this.state.currentQuestion + 1],
+    });
+
+    this.switchToLastStep(this.state.messageDelay, this.state.currentQuestion);
+  }
+
+  restart = () => {
+    this.setState({
+      currentQuestion: 0,
+      questionState: 0,
+      errorState: 0,
+      score: 0,
+      answeredQuestions: [],
+      readyForNext: true,
+    }, () => {
+      $('.flipbook').turn('page', 2).turn('page', 1);
     });
   }
 
@@ -115,84 +166,95 @@ class App extends Component {
 
             <Content />
 
-            <Pictures number={1} />
+            <Pictures number={1} wasAnswered={this.state.answeredQuestions.includes(1)} />
             <Question
               number={1}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
+              wasAnswered={this.state.answeredQuestions.includes(1)}
             />
 
-            <Pictures number={2} />
+            <Pictures number={2} wasAnswered={this.state.answeredQuestions.includes(2)} />
             <Question
               number={2}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
+              wasAnswered={this.state.answeredQuestions.includes(2)}
             />
 
-            <Pictures number={3} />
+            <Pictures number={3} wasAnswered={this.state.answeredQuestions.includes(3)} />
             <Question
               number={3}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
+              wasAnswered={this.state.answeredQuestions.includes(3)}
             />
 
-            <Pictures number={4} />
+            <Pictures number={4} wasAnswered={this.state.answeredQuestions.includes(4)} />
             <Question
               number={4}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
+              wasAnswered={this.state.answeredQuestions.includes(4)}
             />
 
-            <Pictures number={5} />
+            <Pictures number={5} wasAnswered={this.state.answeredQuestions.includes(5)} />
             <Question
               number={5}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
+              wasAnswered={this.state.answeredQuestions.includes(5)}
             />
 
-            <Pictures number={6} />
+            <Pictures number={6} wasAnswered={this.state.answeredQuestions.includes(6)} />
             <Question
               number={6}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
+              wasAnswered={this.state.answeredQuestions.includes(6)}
             />
 
-            <Pictures number={7} />
+            <Pictures number={7} wasAnswered={this.state.answeredQuestions.includes(7)} />
             <Question
               number={7}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
+              wasAnswered={this.state.answeredQuestions.includes(7)}
             />
 
-            <Pictures number={8} />
+            <Pictures number={8} wasAnswered={this.state.answeredQuestions.includes(8)} />
             <Question
               number={8}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
+              wasAnswered={this.state.answeredQuestions.includes(8)}
             />
 
-            <Pictures number={9} />
+            <Pictures number={9} wasAnswered={this.state.answeredQuestions.includes(9)} />
             <Question
               number={9}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
+              wasAnswered={this.state.answeredQuestions.includes(9)}
             />
 
-            <Pictures number={10} />
+            <Pictures number={10} wasAnswered={this.state.answeredQuestions.includes(10)} />
             <Question
               number={10}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
+              wasAnswered={this.state.answeredQuestions.includes(10)}
             />
 
-            <Pictures number={11} />
+            <Pictures number={11} wasAnswered={this.state.answeredQuestions.includes(11)} />
             <Question
               number={11}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
+              wasAnswered={this.state.answeredQuestions.includes(11)}
             />
 
-            <Results score={this.state.score} />
+            <Results score={this.state.score} onRestart={this.restart} />
             <div className="flipbook__page flipbook__page--hard-inside hard" />
             <div className="flipbook__page flipbook__page--hard-inside hard" />
           </div>

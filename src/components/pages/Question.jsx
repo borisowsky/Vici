@@ -52,6 +52,8 @@ class Question extends Component {
       `ans_4_${this.state.current}`,
     ];
 
+    const { rightAnswers } = questionsList[this.state.current];
+
     return (
       <div className="question__answers">
         <div className="question__answer">
@@ -61,9 +63,13 @@ class Question extends Component {
             id={answerId1}
             value="А"
             onChange={this.chooseAnswer}
+            disabled={this.props.wasAnswered}
           />
           <label
-            className="question__label"
+            className={(rightAnswers.includes('А') && this.props.wasAnswered) ?
+              'question__label question__label--right' :
+              'question__label'
+            }
             htmlFor={answerId1}
           ><b>А.</b> {answers['А']}</label>
         </div>
@@ -75,9 +81,13 @@ class Question extends Component {
             id={answerId2}
             value="Б"
             onChange={this.chooseAnswer}
+            disabled={this.props.wasAnswered}
           />
           <label
-            className="question__label"
+            className={(rightAnswers.includes('Б') && this.props.wasAnswered) ?
+              'question__label question__label--right' :
+              'question__label'
+            }
             htmlFor={answerId2}
           ><b>Б.</b> {answers['Б']}</label>
         </div>
@@ -89,9 +99,13 @@ class Question extends Component {
             id={answerId3}
             value="В"
             onChange={this.chooseAnswer}
+            disabled={this.props.wasAnswered}
           />
           <label
-            className="question__label"
+            className={(rightAnswers.includes('В') && this.props.wasAnswered) ?
+              'question__label question__label--right' :
+              'question__label'
+            }
             htmlFor={answerId3}
           ><b>В.</b> {answers['В']}</label>
         </div>
@@ -103,9 +117,13 @@ class Question extends Component {
             id={answerId4}
             value="Г"
             onChange={this.chooseAnswer}
+            disabled={this.props.wasAnswered}
           />
           <label
-            className="question__label"
+            className={(rightAnswers.includes('Г') && this.props.wasAnswered) ?
+              'question__label question__label--right' :
+              'question__label'
+            }
             htmlFor={answerId4}
           ><b>Г.</b> {answers['Г']}</label>
         </div>
@@ -131,14 +149,16 @@ class Question extends Component {
               <div className="question__controls">
                 <input
                   type="submit"
-                  className="question__btn btn"
+                  className="question__btn btn btn--accent"
                   value="Ответить"
+                  disabled={this.props.wasAnswered}
                 />
 
                 <button
                   type="button"
                   className="question__btn btn"
                   onClick={() => { this.props.onFindOut(current); }}
+                  disabled={this.props.wasAnswered}
                 >Узнать ответ</button>
               </div>
             </form>

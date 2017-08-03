@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import questionsList from '../../questions.json';
 import q1А from '../../assets/img/question_1/А.jpg';
 import q1Б from '../../assets/img/question_1/Б.jpg';
 import q1В from '../../assets/img/question_1/В.jpg';
@@ -10,9 +11,6 @@ import q2В from '../../assets/img/question_2/В.jpg';
 import q2Г from '../../assets/img/question_2/Г.jpg';
 
 import q3А from '../../assets/img/question_3/А.jpg';
-import q3Б from '../../assets/img/question_3/Б.jpg';
-import q3В from '../../assets/img/question_3/В.jpg';
-import q3Г from '../../assets/img/question_3/Г.jpg';
 
 import q4А from '../../assets/img/question_4/А.jpg';
 import q4Б from '../../assets/img/question_4/Б.jpg';
@@ -24,7 +22,9 @@ import q5Б from '../../assets/img/question_5/Б.jpg';
 import q5В from '../../assets/img/question_5/В.jpg';
 import q5Г from '../../assets/img/question_5/Г.jpg';
 
+import q6А from '../../assets/img/question_6/А.jpg';
 import q7Г from '../../assets/img/question_7/Г.jpg';
+import q8А from '../../assets/img/question_8/А.jpg';
 
 import q9А from '../../assets/img/question_9/А.jpg';
 import q9Б from '../../assets/img/question_9/Б.jpg';
@@ -46,49 +46,83 @@ class Pictures extends Component {
     question: this.props.number,
     question_1_images: [q1А, q1Б, q1В, q1Г],
     question_2_images: [q2А, q2Б, q2В, q2Г],
-    question_3_images: [q3А, q3Б, q3В, q3Г],
+    question_3_images: [q3А],
     question_4_images: [q4А, q4Б, q4В, q4Г],
     question_5_images: [q5А, q5Б, q5В, q5Г],
-    question_6_images: [],
+    question_6_images: [q6А],
     question_7_images: [q7Г],
-    question_8_images: [],
+    question_8_images: [q8А],
     question_9_images: [q9А, q9Б, q9В, q9Г],
     question_10_images: [q10А, q10Б, q10В, q10Г],
     question_11_images: [q11А, q11Б, q11В, q11Г],
   }
 
-  componentDidUpdate() {
-    // FIXME: Возможно неправильные изображения - 3
-
-    if (this.state.question === this.props.currentQuestion) {
-      // $('.flipbook').turn('next');
-    }
-  }
-
   renderPictures = (question) => {
-    return (
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              А. <img src={this.state[`question_${question}_images`][0]} alt="А" width="100%" />
-            </td>
-            <td>
-              Б. <img src={this.state[`question_${question}_images`][1]} alt="Б" width="100%" />
-            </td>
-          </tr>
+    const { rightAnswers } = questionsList[this.state.question];
 
-          <tr>
-            <td>
-              В. <img src={this.state[`question_${question}_images`][2]} alt="В" width="100%" />
-            </td>
-            <td>
-              Г. <img src={this.state[`question_${question}_images`][3]} alt="Г" width="100%" />
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    );
+    if (![3, 6, 7, 8].includes(this.state.question)) {
+      return (
+        <table className="images-table">
+          <tbody>
+            <tr>
+              <td>
+                А. <img
+                  className={(rightAnswers.includes('А') && this.props.wasAnswered) ?
+                    'images-table__img images-table__img--right' :
+                    'images-table__img'
+                  }
+                  src={this.state[`question_${question}_images`][0]}
+                  alt="А"
+                />
+              </td>
+              <td>
+                Б. <img
+                  className={(rightAnswers.includes('Б') && this.props.wasAnswered) ?
+                    'images-table__img images-table__img--right' :
+                    'images-table__img'
+                  }
+                  src={this.state[`question_${question}_images`][1]}
+                  alt="Б"
+                />
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                В. <img
+                  className={(rightAnswers.includes('В') && this.props.wasAnswered) ?
+                    'images-table__img images-table__img--right' :
+                    'images-table__img'
+                  }
+                  src={this.state[`question_${question}_images`][2]}
+                  alt="В"
+                />
+              </td>
+              <td>
+                Г. <img
+                  className={(rightAnswers.includes('Г') && this.props.wasAnswered) ?
+                    'images-table__img images-table__img--right' :
+                    'images-table__img'
+                  }
+                  src={this.state[`question_${question}_images`][3]}
+                  alt="Г"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      );
+    } else if (this.props.wasAnswered) {
+      return (
+        <div className="images-box">
+          <img
+            className="images-box__img"
+            src={this.state[`question_${question}_images`][0]}
+            alt="Правильный ответ"
+          />
+        </div>
+      );
+    }
   }
 
   render() {

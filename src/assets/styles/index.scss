@@ -7,11 +7,13 @@
 @import 'blocks/question';
 @import 'blocks/btn';
 @import 'blocks/guide';
+@import 'blocks/images-table';
+@import 'blocks/images-box';
 
 // Global styles must be written here
 html {
   color: $color-main;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Noto Serif', sans-serif;
   height: 100%;
   width: 100%;
 }

@@ -12,6 +12,10 @@
     display: block;
     width: calc(100% - 20px);
     font-size: 14px;
+
+    &--right {
+      color: darken($color-right, 20%);
+    }
   }
 
   &__answers {
