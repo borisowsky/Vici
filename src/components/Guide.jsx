@@ -6,6 +6,7 @@ export default class Guide extends Component {
   renderGuideMessage = () => {
     let errorMessage = '';
     let questionMessage = '';
+    const { score } = this.props;
 
     switch (this.props.errorState) {
       case 1:
@@ -47,6 +48,18 @@ export default class Guide extends Component {
 
       case 5:
         questionMessage = questionsList[this.props.questionNumber].hint;
+        break;
+
+      case 6:
+        if (score <= 3) {
+          questionMessage = `Сожалею, но ваших знаний пока недостаточно для чинов офицерских. Но вы можете служить
+          рядовым гренадёром`;
+        } else if ((score >= 4) && (score <= 6)) {
+          questionMessage = 'Вы неплохо справились с заданием! Поздравляю вас с чином сержанта русской пехоты!';
+        } else if ((score >= 7) && (score <= 11)) {
+          questionMessage = `Вы отлично справились с заданием! Поздравляю вас с чином подпоручика Архангелогородского
+          полка! В чине сём я сам участвовал в гросс-егерсдорфской баталии`;
+        }
         break;
 
       case 0:

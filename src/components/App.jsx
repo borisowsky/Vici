@@ -17,6 +17,7 @@ class App extends Component {
    * 3 - "Неправильно!"
    * 4 - "Частично правильно"
    * 5 - Дополнительная информация по вопросу
+   * 6 - Оглашение результатов
    */
   state = {
     currentQuestion: 0,
@@ -32,8 +33,8 @@ class App extends Component {
   componentDidMount() {
     $('.flipbook').turn({
       gradients: true,
-      width: 1040,
-      height: 700,
+      width: 1248,
+      height: 840,
       autoCenter: true,
       duration: 1000,
     });
@@ -55,6 +56,12 @@ class App extends Component {
       setTimeout(() => {
         this.setState({ questionState: (page === 2) ? -1 : 0 });
       }, 500);
+    });
+
+    $('.flipbook').bind('turned', (e, page) => {
+      if (page === 26) {
+        this.setState({ questionState: 6 });
+      }
     });
   }
 
@@ -155,6 +162,7 @@ class App extends Component {
           questionState={this.state.questionState}
           errorState={this.state.errorState}
           questionNumber={this.state.currentQuestion}
+          score={this.state.score}
         />
 
         <div className="container">
@@ -171,6 +179,7 @@ class App extends Component {
               number={1}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
+              currentQuestion={this.state.currentQuestion}
               wasAnswered={this.state.answeredQuestions.includes(1)}
             />
 
@@ -179,6 +188,7 @@ class App extends Component {
               number={2}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
+              currentQuestion={this.state.currentQuestion}
               wasAnswered={this.state.answeredQuestions.includes(2)}
             />
 
@@ -187,6 +197,7 @@ class App extends Component {
               number={3}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
+              currentQuestion={this.state.currentQuestion}
               wasAnswered={this.state.answeredQuestions.includes(3)}
             />
 
@@ -195,6 +206,7 @@ class App extends Component {
               number={4}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
+              currentQuestion={this.state.currentQuestion}
               wasAnswered={this.state.answeredQuestions.includes(4)}
             />
 
@@ -203,6 +215,7 @@ class App extends Component {
               number={5}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
+              currentQuestion={this.state.currentQuestion}
               wasAnswered={this.state.answeredQuestions.includes(5)}
             />
 
@@ -211,6 +224,7 @@ class App extends Component {
               number={6}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
+              currentQuestion={this.state.currentQuestion}
               wasAnswered={this.state.answeredQuestions.includes(6)}
             />
 
@@ -219,6 +233,7 @@ class App extends Component {
               number={7}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
+              currentQuestion={this.state.currentQuestion}
               wasAnswered={this.state.answeredQuestions.includes(7)}
             />
 
@@ -227,6 +242,7 @@ class App extends Component {
               number={8}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
+              currentQuestion={this.state.currentQuestion}
               wasAnswered={this.state.answeredQuestions.includes(8)}
             />
 
@@ -235,6 +251,7 @@ class App extends Component {
               number={9}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
+              currentQuestion={this.state.currentQuestion}
               wasAnswered={this.state.answeredQuestions.includes(9)}
             />
 
@@ -243,6 +260,7 @@ class App extends Component {
               number={10}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
+              currentQuestion={this.state.currentQuestion}
               wasAnswered={this.state.answeredQuestions.includes(10)}
             />
 
@@ -251,6 +269,7 @@ class App extends Component {
               number={11}
               onAnswer={this.handleAnswer}
               onFindOut={this.handleFindOut}
+              currentQuestion={this.state.currentQuestion}
               wasAnswered={this.state.answeredQuestions.includes(11)}
             />
 

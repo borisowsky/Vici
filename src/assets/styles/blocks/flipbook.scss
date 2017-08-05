@@ -35,10 +35,14 @@
   }
 
   &__restart {
+    width: 140px;
     height: 40px;
     position: absolute;
     top: 50%;
-    left: 195px;
-    margin: auto;
+    left: calc(50% - 70px);
+  }
+
+  &__rank {
+    text-align: center;
   }
 }
