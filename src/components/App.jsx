@@ -26,8 +26,9 @@ class App extends Component {
     score: 0,
     answeredQuestions: [],
     readyForNext: true,
-    messageDelay: 3000,
-    hintDelay: 8500,
+    resetAnswers: false,
+    messageDelay: 0, // 3000,
+    hintDelay: 0, // 8500,
   }
 
   componentDidMount() {
@@ -150,7 +151,9 @@ class App extends Component {
       score: 0,
       answeredQuestions: [],
       readyForNext: true,
+      resetAnswers: true,
     }, () => {
+      this.setState({ resetAnswers: false });
       $('.flipbook').turn('page', 2).turn('page', 1);
     });
   }
@@ -181,6 +184,7 @@ class App extends Component {
               onFindOut={this.handleFindOut}
               currentQuestion={this.state.currentQuestion}
               wasAnswered={this.state.answeredQuestions.includes(1)}
+              resetAnswers={this.state.resetAnswers}
             />
 
             <Pictures number={2} wasAnswered={this.state.answeredQuestions.includes(2)} />
@@ -199,6 +203,7 @@ class App extends Component {
               onFindOut={this.handleFindOut}
               currentQuestion={this.state.currentQuestion}
               wasAnswered={this.state.answeredQuestions.includes(3)}
+              resetAnswers={this.state.resetAnswers}
             />
 
             <Pictures number={4} wasAnswered={this.state.answeredQuestions.includes(4)} />
@@ -208,6 +213,7 @@ class App extends Component {
               onFindOut={this.handleFindOut}
               currentQuestion={this.state.currentQuestion}
               wasAnswered={this.state.answeredQuestions.includes(4)}
+              resetAnswers={this.state.resetAnswers}
             />
 
             <Pictures number={5} wasAnswered={this.state.answeredQuestions.includes(5)} />
@@ -217,6 +223,7 @@ class App extends Component {
               onFindOut={this.handleFindOut}
               currentQuestion={this.state.currentQuestion}
               wasAnswered={this.state.answeredQuestions.includes(5)}
+              resetAnswers={this.state.resetAnswers}
             />
 
             <Pictures number={6} wasAnswered={this.state.answeredQuestions.includes(6)} />
@@ -226,6 +233,7 @@ class App extends Component {
               onFindOut={this.handleFindOut}
               currentQuestion={this.state.currentQuestion}
               wasAnswered={this.state.answeredQuestions.includes(6)}
+              resetAnswers={this.state.resetAnswers}
             />
 
             <Pictures number={7} wasAnswered={this.state.answeredQuestions.includes(7)} />
@@ -235,6 +243,7 @@ class App extends Component {
               onFindOut={this.handleFindOut}
               currentQuestion={this.state.currentQuestion}
               wasAnswered={this.state.answeredQuestions.includes(7)}
+              resetAnswers={this.state.resetAnswers}
             />
 
             <Pictures number={8} wasAnswered={this.state.answeredQuestions.includes(8)} />
@@ -244,6 +253,7 @@ class App extends Component {
               onFindOut={this.handleFindOut}
               currentQuestion={this.state.currentQuestion}
               wasAnswered={this.state.answeredQuestions.includes(8)}
+              resetAnswers={this.state.resetAnswers}
             />
 
             <Pictures number={9} wasAnswered={this.state.answeredQuestions.includes(9)} />
@@ -253,6 +263,7 @@ class App extends Component {
               onFindOut={this.handleFindOut}
               currentQuestion={this.state.currentQuestion}
               wasAnswered={this.state.answeredQuestions.includes(9)}
+              resetAnswers={this.state.resetAnswers}
             />
 
             <Pictures number={10} wasAnswered={this.state.answeredQuestions.includes(10)} />
@@ -262,6 +273,7 @@ class App extends Component {
               onFindOut={this.handleFindOut}
               currentQuestion={this.state.currentQuestion}
               wasAnswered={this.state.answeredQuestions.includes(10)}
+              resetAnswers={this.state.resetAnswers}
             />
 
             <Pictures number={11} wasAnswered={this.state.answeredQuestions.includes(11)} />
@@ -271,6 +283,7 @@ class App extends Component {
               onFindOut={this.handleFindOut}
               currentQuestion={this.state.currentQuestion}
               wasAnswered={this.state.answeredQuestions.includes(11)}
+              resetAnswers={this.state.resetAnswers}
             />
 
             <Results score={this.state.score} onRestart={this.restart} />

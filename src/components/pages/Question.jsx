@@ -7,6 +7,17 @@ class Question extends Component {
     answers: [],
   }
 
+  componentWillReceiveProps = (nextProps) => {
+    if (nextProps.resetAnswers) {
+      this.setState({ answers: [] }, () => {
+        this.checkBox1.checked = false;
+        this.checkBox2.checked = false;
+        this.checkBox3.checked = false;
+        this.checkBox4.checked = false;
+      });
+    }
+  }
+
   onFormSubmit = (e) => {
     e.preventDefault();
 
@@ -46,10 +57,10 @@ class Question extends Component {
       answerId3,
       answerId4,
     ] = [
-      `ans_1_${this.state.current}`,
-      `ans_2_${this.state.current}`,
-      `ans_3_${this.state.current}`,
-      `ans_4_${this.state.current}`,
+      `ans_${this.state.current}_1`,
+      `ans_${this.state.current}_2`,
+      `ans_${this.state.current}_3`,
+      `ans_${this.state.current}_4`,
     ];
 
     const { rightAnswers } = questionsList[this.state.current];
@@ -58,6 +69,7 @@ class Question extends Component {
       <div className="question__answers">
         <div className="question__answer">
           <input
+            ref={(node) => { this.checkBox1 = node; }}
             className="question__checkbox"
             type="checkbox"
             id={answerId1}
@@ -76,6 +88,7 @@ class Question extends Component {
 
         <div className="question__answer">
           <input
+            ref={(node) => { this.checkBox2 = node; }}
             className="question__checkbox"
             type="checkbox"
             id={answerId2}
@@ -94,6 +107,7 @@ class Question extends Component {
 
         <div className="question__answer">
           <input
+            ref={(node) => { this.checkBox3 = node; }}
             className="question__checkbox"
             type="checkbox"
             id={answerId3}
@@ -112,6 +126,7 @@ class Question extends Component {
 
         <div className="question__answer">
           <input
+            ref={(node) => { this.checkBox4 = node; }}
             className="question__checkbox"
             type="checkbox"
             id={answerId4}
@@ -141,7 +156,7 @@ class Question extends Component {
             <div className="question__text">
               <div>Вопрос {this.state.current}.</div>
               <br />
-              <div>{questionsList[current].text}</div>
+              <div className="question__desc">{questionsList[current].text}</div>
             </div>
 
             <form className="question__form" onSubmit={this.onFormSubmit}>

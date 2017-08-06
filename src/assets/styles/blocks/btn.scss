@@ -2,7 +2,7 @@ $color-button: #644838;
 
 .btn {
   display: inline-block;
-  padding: 6px 15px;
+  padding: 10px 25px;
   border: 0;
   border-radius: 2px;
   color: $color-button;
@@ -11,6 +11,7 @@ $color-button: #644838;
   box-shadow: 0 0 0 rgba($color-button, .5);
   transition: box-shadow .2s;
   outline: none;
+  font-size: 21px;
 
   &:active {
     box-shadow: 0 0 10px rgba($color-button, .5);

@@ -35,14 +35,25 @@
   }
 
   &__restart {
-    width: 140px;
-    height: 40px;
     position: absolute;
     top: 50%;
-    left: calc(50% - 70px);
+    left: calc(50% - 100px);
   }
 
   &__rank {
+    font-size: 30px;
+    font-weight: bold;
     text-align: center;
+  }
+
+  &__center {
+    position: absolute;
+    top: 40%;
+    left: 20px;
+    right: 20px;
+    margin: auto;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
   }
 }

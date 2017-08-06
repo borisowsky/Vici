@@ -15,7 +15,7 @@ const Cover = (props) => {
     <div className="flipbook__page flipbook__page--description">
       <div className="flipbook__content">
         <div className="flipbook__rank">
-          Ваше звание: «{renderRank(props.score)}»
+          Ваше звание: <br /> «{renderRank(props.score)}»
         </div>
         <button
           className="flipbook__restart btn btn--accent"
