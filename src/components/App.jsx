@@ -27,8 +27,8 @@ class App extends Component {
     answeredQuestions: [],
     readyForNext: true,
     resetAnswers: false,
-    messageDelay: 0, // 3000,
-    hintDelay: 0, // 8500,
+    messageDelay: 3000,
+    hintDelay: 8500,
   }
 
   componentDidMount() {
