@@ -6,6 +6,7 @@ import Results from './pages/Results';
 import Content from './pages/Content';
 import Guide from './Guide';
 import questionsList from '../questions.json';
+import grammar from '../assets/img/gramota.jpg';
 
 class App extends Component {
   /**
@@ -27,8 +28,8 @@ class App extends Component {
     answeredQuestions: [],
     readyForNext: true,
     resetAnswers: false,
-    messageDelay: 3000,
-    hintDelay: 8500,
+    messageDelay: 0, //3000,
+    hintDelay: 0, //8500,
   }
 
   componentDidMount() {
@@ -168,6 +169,12 @@ class App extends Component {
           score={this.state.score}
         />
 
+        <button
+          className="btn btn--accent restart-btn"
+          onClick={() => { this.restart(); }}
+          disabled={this.state.currentQuestion === 0}
+        >Начать заново</button>
+
         <div className="container">
           <div className="flipbook">
             <div className="flipbook__page flipbook__page--main hard">
@@ -287,7 +294,9 @@ class App extends Component {
             />
 
             <Results score={this.state.score} onRestart={this.restart} />
-            <div className="flipbook__page flipbook__page--hard-inside hard" />
+            <div className="flipbook__page flipbook__page--hard-inside hard">
+              <img className="flipbook__grammar" src={grammar} />
+            </div>
             <div className="flipbook__page flipbook__page--hard-inside hard" />
           </div>
         </div>
