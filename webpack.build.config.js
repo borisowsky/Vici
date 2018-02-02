@@ -8,7 +8,7 @@ const SRC_DIR = path.resolve(__dirname, 'src');
 const OUTPUT_DIR = path.resolve(__dirname, 'dist');
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: path.resolve(__dirname, 'src/index.jsx'),
 
   output: {
     path: OUTPUT_DIR,
@@ -24,6 +24,11 @@ module.exports = {
           fallback: 'style-loader',
           use: ['css-loader', 'csso-loader', 'sass-loader'],
         }),
+        include: [SRC_DIR],
+      },
+      {
+        test: /\.json$/,
+        use: ['json-loader'],
         include: [SRC_DIR],
       },
       {
@@ -46,6 +51,10 @@ module.exports = {
 
   target: 'electron-renderer',
 
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html',
@@ -53,6 +62,10 @@ module.exports = {
     new ExtractTextPlugin('bundle.css'),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
     }),
     new BabiliPlugin(),
   ],

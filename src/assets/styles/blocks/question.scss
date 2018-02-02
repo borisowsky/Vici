@@ -1,0 +1,37 @@
+.question {
+  font-size: 30px;
+
+  &__desc {
+    font-weight: bold;
+  }
+
+  &__checkbox {
+    display: block;
+    margin: 5px 5px 5px 0;
+  }
+
+  &__label {
+    display: block;
+    width: calc(100% - 20px);
+
+    &--right {
+      color: darken($color-right, 20%);
+    }
+  }
+
+  &__answers {
+    margin: 30px 0;
+  }
+
+  &__answer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+  }
+}
